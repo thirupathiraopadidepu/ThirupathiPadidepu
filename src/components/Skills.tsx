@@ -27,6 +27,7 @@ const Skills = () => {
     { name: ".NET", icon: Box, category: "Backend" },
     { name: "C#", icon: Terminal, category: "Backend" },
     { name: "SQL Server", icon: Database, category: "Database" },
+    { name: "MongoDB", icon: Database, category: "Database" },
     { name: "Azure", icon: Cloud, category: "Cloud" },
     { name: "Azure functions", icon: Cloud, category: "Cloud" },
     { name: "Git", icon: Git, category: "Tools" },
