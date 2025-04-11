@@ -136,11 +136,7 @@ const Projects = () => {
         "Designed and developed a modern, responsive website for D&N Craft, an interior design company. Showcased portfolio and services using React.",
       technologies: ["React", "GitHub Copilot", "JavaScript"],
       link: "https://www.dncraft.in/",
-      images: [
-        "public/ASSET TELEMATICS4.jpg",
-        "public/VALUE CREED3.png",
-        "public/meslova3.jpg",
-      ],
+      images: ["/ASSET TELEMATICS4.jpg", "/VALUE CREED3.png", "/meslova3.jpg"],
     },
   ];
 
