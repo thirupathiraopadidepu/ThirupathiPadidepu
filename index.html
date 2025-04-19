@@ -55,7 +55,23 @@
         ]
       }
     </script>
+
+    <!-- ✅ Google Analytics Tracking Code (Insert here) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-Q67BS1P2LX"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-Q67BS1P2LX");
+    </script>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
