@@ -1,13 +1,14 @@
-import { useEffect } from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Experience from './components/Experience';
-import Skills from './components/Skills';
-import Certifications from './components/Certifications';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import { useEffect } from "react";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Experience from "./components/Experience";
+import Skills from "./components/Skills";
+import Certifications from "./components/Certifications";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import Services from "./components/Services";
 
 function App() {
   useEffect(() => {
@@ -15,13 +16,13 @@ function App() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            
+            entry.target.classList.add("visible");
+
             // Add stagger effect to child elements
-            const children = entry.target.querySelectorAll('.stagger-item');
+            const children = entry.target.querySelectorAll(".stagger-item");
             children.forEach((child, index) => {
               setTimeout(() => {
-                child.classList.add('visible');
+                child.classList.add("visible");
               }, index * 100);
             });
           }
@@ -32,8 +33,8 @@ function App() {
       }
     );
 
-    document.querySelectorAll('section').forEach((section) => {
-      section.classList.add('section-transition');
+    document.querySelectorAll("section").forEach((section) => {
+      section.classList.add("section-transition");
       observer.observe(section);
     });
 
@@ -50,6 +51,7 @@ function App() {
         <Experience />
         <Skills />
         <Projects />
+        <Services />
         <Certifications />
         <Contact />
       </main>
