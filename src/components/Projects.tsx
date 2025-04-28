@@ -23,7 +23,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
   }, [project.images.length]);
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+    <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all transform hover:scale-105 hover:rotate-3 duration-300">
       <div className="relative aspect-video mb-4 overflow-hidden rounded-lg">
         <div
           className="flex transition-transform duration-500 ease-in-out"
@@ -34,7 +34,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
               key={index}
               src={img}
               alt={`${project.title} screenshot ${index + 1}`}
-              className="min-w-full h-full object-cover"
+              className="min-w-full h-full object-cover transition-transform duration-500 ease-in-out"
             />
           ))}
         </div>
@@ -47,24 +47,24 @@ const ProjectCard = ({ project }: { project: Project }) => {
                     (prev - 1 + project.images.length) % project.images.length
                 )
               }
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 p-1 rounded-full hover:bg-white"
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full hover:bg-white transition-transform"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-6 h-6 text-gray-800" />
             </button>
             <button
               onClick={() =>
                 setCurrentImage((prev) => (prev + 1) % project.images.length)
               }
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 p-1 rounded-full hover:bg-white"
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full hover:bg-white transition-transform"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-6 h-6 text-gray-800" />
             </button>
           </>
         )}
       </div>
 
       <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-      <p className={`text-gray-600 mb-4 ${isExpanded ? "" : "line-clamp-2"}`}>
+      <p className={`text-gray-600 mb-4 ${isExpanded ? "" : "line-clamp-3"}`}>
         {project.description}
       </p>
       <div className="flex flex-wrap gap-2 mb-4">
@@ -141,9 +141,11 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-gray-50">
+    <section id="projects" className="py-20 bg-gray-100">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-12">Projects</h2>
+        <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
+          Projects
+        </h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {projects.map((project) => (
