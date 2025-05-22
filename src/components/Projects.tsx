@@ -23,7 +23,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
   }, [project.images.length]);
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all transform hover:scale-105 hover:rotate-3 duration-300">
+    <div className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-all transform hover:scale-105  duration-300">
       <div className="relative aspect-video mb-4 overflow-hidden rounded-lg">
         <div
           className="flex transition-transform duration-500 ease-in-out"
@@ -137,6 +137,14 @@ const Projects = () => {
       technologies: ["React", "GitHub Copilot", "JavaScript"],
       link: "https://www.dncraft.in/",
       images: ["/ASSET TELEMATICS4.jpg", "/VALUE CREED3.png", "/meslova3.jpg"],
+    },
+    {
+      title: "SV Industries",
+      description:
+        "Designed and developed a modern, responsive website for SV Industries, a leading fan manufacturer in India. Showcased product categories and dealership opportunities using React and Vercel deployment.",
+      technologies: ["React", "Tailwind CSS", "TypeScript", "Vercel", "SEO"],
+      link: "https://www.svcoolingfans.com",
+      images: ["/ef.jpeg", "/pcf1.jpg", "/pcf3.avif", "/sf.jpeg", "/wf.jpeg"],
     },
   ];
 
