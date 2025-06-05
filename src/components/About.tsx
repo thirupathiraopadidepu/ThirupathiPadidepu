@@ -58,17 +58,17 @@ const About = () => {
               <strong>Thirupathirao Padidepu</strong>), a passionate and
               experienced <strong>Full Stack Developer</strong> specializing in{" "}
               <strong>.NET, React, and Angular</strong> technologies. With over
-              2.8 years of hands-on development experience, I’ve built and
+              3 years of hands-on development experience, I’ve built and
               enhanced dynamic, user-friendly, and high-performance web
               applications.
             </p>
-            <p>
+            {/* <p>
               I provide <strong>freelance web development services</strong> and
               collaborate remotely with startups, tech teams, and individual
               clients. Whether you need a custom website, portfolio, dashboard,
               or business application, I deliver clean code, modern UI, and
               scalable solutions.
-            </p>
+            </p> */}
             <p>
               <strong>Technologies I work with include:</strong>
             </p>
@@ -79,12 +79,12 @@ const About = () => {
               <li>JavaScript, HTML, CSS</li>
               <li>SQL Server, MongoDB</li>
             </ul>
-            <p>
+            {/* <p>
               If you're searching for a{" "}
               <strong>.NET Full Stack Developer</strong>,{" "}
               <strong>React Developer</strong>, or a trusted{" "}
               <strong>freelancer from India</strong>, let's connect!
-            </p>
+            </p> */}
             <p>
               📧 <strong>Email:</strong> thirupathiraopadidepu@gmail.com <br />
               🔗{" "}
