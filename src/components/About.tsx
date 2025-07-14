@@ -111,7 +111,7 @@ const About = () => {
             {/* Download Resume Button */}
             <div className="mt-4">
               <a
-                href="/Thiru Resume.pdf"
+                href="/THIRUPATHI PADIDEPU - .NET.pdf"
                 download
                 className="inline-flex items-center px-5 py-2.5 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition-colors"
               >

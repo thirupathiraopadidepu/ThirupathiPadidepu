@@ -43,7 +43,7 @@ const Projects = () => {
         <CircularGallery
           items={projects.map((project) => ({
             image: project.imageUrl,
-            text: project.title, // or use project.description if preferred
+            text: project.title,
           }))}
         />
       </div>
