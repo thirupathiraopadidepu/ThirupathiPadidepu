@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Footer = () => {
   return (
@@ -7,7 +7,6 @@ const Footer = () => {
         <p className="mb-4">
           © {new Date().getFullYear()} Thirupathi Padidepu. All rights reserved.
         </p>
-        
       </div>
     </footer>
   );
