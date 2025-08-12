@@ -8,8 +8,6 @@ import {
   Server,
   Layout,
 } from "lucide-react";
-// import TiltedCard from "./Components/TiltedCard/TiltedCard";
-import ProfileCard from "./Components/ProfileCard/ProfileCard";
 
 const Hero = () => {
   return (
@@ -39,55 +37,35 @@ const Hero = () => {
         )}
       </div>
 
-      {/* Main Content Grid */}
-      <div className="relative min-h-screen flex items-center justify-center px-4 z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full max-w-7xl mx-auto">
-          {/* LEFT: Avatar + Title + Button */}
-          <div className="text-center md:text-left">
-            {/* Avatar */}
-            <div className="relative mb-12 animate-float mx-auto md:mx-0">
-              <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center animate-glow">
-                <div className="w-28 h-28 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
-                  <span className="text-4xl text-white font-bold">TP</span>
-                </div>
-              </div>
-              <div className="absolute inset-0 bg-blue-500 rounded-full animate-pulse-slow opacity-50 blur-xl"></div>
+      {/* Centered Content */}
+      <div className="relative min-h-screen flex flex-col items-center justify-center px-4 z-10 text-center">
+        {/* Avatar */}
+        <div className="relative mb-12 animate-float">
+          <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center animate-glow">
+            <div className="w-28 h-28 bg-gradient-to-br from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
+              <span className="text-4xl text-white font-bold">TP</span>
             </div>
-
-            {/* Name */}
-            <h1 className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-300 mb-6 opacity-0 animate-title">
-              Thirupathi Padidepu
-            </h1>
-
-            {/* Role */}
-            <h2 className="text-2xl md:text-3xl text-blue-400 font-semibold mb-12 opacity-0 animate-role">
-              SOFTWARE DESIGN ENGINEER
-            </h2>
-
-            {/* CTA Button */}
-            <a
-              href="#projects"
-              className="inline-block bg-gradient-to-r from-blue-600 to-blue-800 text-white px-10 py-4 rounded-full hover:from-blue-700 hover:to-blue-900 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
-            >
-              Explore My Work
-            </a>
           </div>
-
-          {/* RIGHT: TiltedCard */}
-          <div className="flex justify-center md:justify-end">
-            <ProfileCard
-              name="Thirupathi Padidepu"
-              title="Software Engineer"
-              handle="thirupathipadidepu.in"
-              status="Online"
-              contactText="Contact Me"
-              avatarUrl="/Thirupathi.jpg"
-              showUserInfo={true}
-              enableTilt={true}
-              onContactClick={() => console.log("Contact clicked")}
-            />
-          </div>
+          <div className="absolute inset-0 bg-blue-500 rounded-full animate-pulse-slow opacity-50 blur-xl"></div>
         </div>
+
+        {/* Name */}
+        <h1 className="text-5xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-300 mb-6 opacity-0 animate-title">
+          Thirupathi Padidepu
+        </h1>
+
+        {/* Role */}
+        <h2 className="text-2xl md:text-3xl text-blue-400 font-semibold mb-12 opacity-0 animate-role">
+          SOFTWARE DESIGN ENGINEER
+        </h2>
+
+        {/* CTA Button */}
+        <a
+          href="#projects"
+          className="inline-block bg-gradient-to-r from-blue-600 to-blue-800 text-white px-10 py-4 rounded-full hover:from-blue-700 hover:to-blue-900 transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+        >
+          Explore My Work
+        </a>
       </div>
 
       {/* Scroll Indicator */}
