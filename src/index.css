@@ -138,3 +138,53 @@ html {
   background-size: 400% 400%;
   animation: gradient-animation 10s ease infinite;
 }
+@keyframes fadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateX(15px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(15px);
+  }
+}
+
+.animate-fade-slide {
+  animation: fadeSlide 2.5s ease-in-out;
+}
+@keyframes waveEmoji {
+  0% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(20deg);
+  }
+  30% {
+    transform: rotate(-15deg);
+  }
+  45% {
+    transform: rotate(20deg);
+  }
+  60% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.wave {
+  display: inline-block;
+  animation: waveEmoji 1s ease-in-out;
+}
