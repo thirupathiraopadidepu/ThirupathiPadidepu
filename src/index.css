@@ -188,3 +188,18 @@ html {
   display: inline-block;
   animation: waveEmoji 1s ease-in-out;
 }
+@keyframes floatSlow {
+  0% {
+    transform: translateY(0px) translateX(0px);
+  }
+  50% {
+    transform: translateY(-18px) translateX(10px);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 5s ease-in-out infinite;
+}

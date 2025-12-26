@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ChatWindow from "./ChatWindow";
 
 const FloatingChatbot = () => {
@@ -6,45 +6,70 @@ const FloatingChatbot = () => {
   const [showMsg, setShowMsg] = useState(false);
   const [msgIndex, setMsgIndex] = useState(0);
 
+  const autoOpenedRef = useRef(false);
+
   const messages = [
-    "Hey buddy, chat with me! 👋",
-    "Need help? I'm here 😊👋",
-    "Tap to start the conversation! 👋",
-    "I'm your AI assistant 💬👋",
+    "Hey buddy, chat with me!",
+    "Need help? I'm here 😊",
+    "Tap to start the conversation!",
+    "I'm your AI assistant 💬",
   ];
 
-  // Auto-show message every 5 seconds
+  /* ================= AUTO-OPEN CHAT (8s) ================= */
   useEffect(() => {
+    if (autoOpenedRef.current) return;
+
+    const timer = setTimeout(() => {
+      setOpen(true);
+      autoOpenedRef.current = true;
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  /* ================= TOOLTIP ROTATION ================= */
+  useEffect(() => {
+    if (open) {
+      setShowMsg(false);
+      return;
+    }
+
     const interval = setInterval(() => {
       setMsgIndex((prev) => (prev + 1) % messages.length);
-
       setShowMsg(true);
-      setTimeout(() => setShowMsg(false), 2000); // Show message for 2.5 sec
+
+      const hideTimer = setTimeout(() => {
+        setShowMsg(false);
+      }, 2200);
+
+      return () => clearTimeout(hideTimer);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [open, messages.length]);
 
   return (
     <>
+      {/* Chat Window */}
       {open && (
         <ChatWindow onClose={() => setOpen(false)} isStandalone={false} />
       )}
 
+      {/* Floating Button */}
       {!open && (
-        <div className="fixed bottom-6 right-6 z-50 group flex items-center gap-3">
-          {/* Auto-appearing message bubble */}
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+          {/* Tooltip Bubble */}
           {showMsg && (
             <div
               className="
-      bg-white text-black text-sm font-medium
-      px-4 py-2 rounded-xl shadow-lg
-      animate-fade-slide
-      whitespace-nowrap
-      flex gap-1 items-center
-    "
+                bg-white text-black text-sm font-medium
+                px-4 py-2 rounded-xl shadow-lg
+                animate-fade-slide
+                whitespace-nowrap
+                flex items-center gap-1
+              "
             >
-              {messages[msgIndex].split("👋")[0]}
+              {messages[msgIndex]}
               <span className="wave">👋</span>
             </div>
           )}
@@ -57,15 +82,14 @@ const FloatingChatbot = () => {
               rounded-full
               shadow-xl
               hover:scale-110
-              transition
-              p-0
+              transition-transform
               bg-transparent
               flex items-center justify-center
             "
           >
             <img
               src="/TP.png"
-              alt="TP Chatbot Icon"
+              alt="TP Chatbot"
               className="w-full h-full object-contain"
             />
           </button>
