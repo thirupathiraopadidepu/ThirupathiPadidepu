@@ -3,9 +3,9 @@ import Groq from "groq-sdk";
 /**
  * Force Node runtime (required for groq-sdk)
  */
-// export const config = {
-//   runtime: "nodejs",
-// };
+export const config = {
+  runtime: "nodejs",
+};
 
 /**
  * Initialize Groq client once
