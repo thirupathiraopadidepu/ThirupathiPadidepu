@@ -1,20 +1,24 @@
 import Groq from "groq-sdk";
 
-export default async function handler(req, res) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Only POST allowed" });
-  }
+export const config = {
+  runtime: "nodejs",
+};
 
+const client = new Groq({
+  apiKey: process.env.GROQ_API_KEY,
+});
+
+export default async function handler(req, res) {
   try {
-    const { message } = req.body;
+    if (req.method !== "POST") {
+      return res.status(405).json({ error: "Only POST allowed" });
+    }
+
+    const { message } = req.body || {};
 
     if (!message || message.trim() === "") {
       return res.status(400).json({ error: "Message required" });
     }
-
-    const client = new Groq({
-      apiKey: process.env.GROQ_API_KEY,
-    });
 
     const systemPrompt = `
 You are **TP Freelance Assistant**, the official AI assistant for **Thirupathi Padidepu (TP)**.
@@ -39,23 +43,26 @@ Use ONLY this TP service list:
 
 If a user asks “what do you offer?”, “services?”, “what can TP do?”, ALWAYS reply with TP’s services above.
 `;
-    const response = await client.chat.completions.create({
+
+    const completion = await client.chat.completions.create({
       model: "llama-3.1-8b-instant",
       messages: [
         { role: "system", content: systemPrompt },
         { role: "user", content: message },
       ],
+      temperature: 0.3,
       max_tokens: 500,
     });
 
     const reply =
-      response?.choices?.[0]?.message?.content ||
+      completion?.choices?.[0]?.message?.content ??
       "TP Assistant couldn't reply.";
 
     return res.status(200).json({ reply });
-  } catch (error) {
+  } catch (err) {
+    console.error("API ERROR:", err);
     return res.status(500).json({
-      error: error.message || "Server error",
+      error: "Internal server error",
     });
   }
 }
