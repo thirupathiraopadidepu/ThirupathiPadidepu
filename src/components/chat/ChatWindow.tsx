@@ -9,45 +9,71 @@ interface Props {
   isStandalone?: boolean;
 }
 
+const API_BASE = import.meta.env.VITE_API_BASE || "";
+
 const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
   const [messages, setMessages] = useState<
     { from: "user" | "bot"; text: string }[]
   >([]);
   const [input, setInput] = useState("");
   const [streamingText, setStreamingText] = useState("");
-  const [copiedCode, setCopiedCode] = useState<string | null>(null); // 🔥 NEW
+  const [copiedCode, setCopiedCode] = useState<string | null>(null);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
 
     const userMessage = input;
+    setInput("");
 
     setMessages((prev) => [...prev, { from: "user", text: userMessage }]);
-    setInput("");
     setStreamingText("TP is typing...");
 
-    const res = await fetch("/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: userMessage }),
-    });
+    try {
+      const res = await fetch(`${API_BASE}/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userMessage }),
+      });
 
-    const data = await res.json();
-    const text = data.reply;
-
-    // Typing effect
-    let index = 0;
-    setStreamingText("");
-
-    const interval = setInterval(() => {
-      setStreamingText((prev) => prev + text.charAt(index));
-      index++;
-      if (index >= text.length) {
-        clearInterval(interval);
-        setMessages((prev) => [...prev, { from: "bot", text }]);
-        setStreamingText("");
+      // ❗ Important safety check
+      if (!res.ok) {
+        throw new Error(`Server error ${res.status}`);
       }
-    }, 15);
+
+      const data = await res.json();
+
+      if (!data?.reply) {
+        throw new Error("Invalid response from server");
+      }
+
+      const text = data.reply;
+
+      // Typing animation
+      let index = 0;
+      setStreamingText("");
+
+      const interval = setInterval(() => {
+        setStreamingText((prev) => prev + text.charAt(index));
+        index++;
+
+        if (index >= text.length) {
+          clearInterval(interval);
+          setMessages((prev) => [...prev, { from: "bot", text }]);
+          setStreamingText("");
+        }
+      }, 15);
+    } catch (error) {
+      console.error("Chat error:", error);
+
+      setStreamingText("");
+      setMessages((prev) => [
+        ...prev,
+        {
+          from: "bot",
+          text: "⚠️ Sorry, the assistant is temporarily unavailable. Please try again in a moment.",
+        },
+      ]);
+    }
   };
 
   return (
@@ -86,18 +112,7 @@ const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
-                code({
-                  node,
-                  inline,
-                  className,
-                  children,
-                  ...props
-                }: {
-                  node?: any;
-                  inline?: boolean;
-                  className?: string;
-                  children?: React.ReactNode;
-                }) {
+                code({ inline, className, children, ...props }: any) {
                   const match = /language-(\w+)/.exec(className || "");
                   const codeText = String(children).replace(/\n$/, "");
 
@@ -114,16 +129,14 @@ const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
 
                   return (
                     <div className="relative group">
-                      {/* --- Copy Button --- */}
                       <button
                         onClick={() => {
                           navigator.clipboard.writeText(codeText);
                           setCopiedCode(codeText);
-
                           setTimeout(() => setCopiedCode(null), 1500);
                         }}
-                        className="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition-opacity 
-                                   bg-gray-700 text-gray-200 text-xs px-2 py-1 rounded hover:bg-gray-600"
+                        className="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition
+                                   bg-gray-700 text-gray-200 text-xs px-2 py-1 rounded"
                       >
                         {copiedCode === codeText ? "✓ Copied" : "Copy"}
                       </button>
@@ -133,7 +146,6 @@ const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
                         language={match[1]}
                         PreTag="div"
                         className="rounded-md my-2"
-                        {...props}
                       >
                         {codeText}
                       </SyntaxHighlighter>
@@ -147,7 +159,6 @@ const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
           </div>
         ))}
 
-        {/* Live Typing */}
         {streamingText && (
           <div className="bg-gray-700 p-2 rounded-lg text-gray-200 text-sm animate-pulse">
             {streamingText}
@@ -162,6 +173,7 @@ const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Ask something..."
+          onKeyDown={(e) => e.key === "Enter" && sendMessage()}
         />
         <button
           onClick={sendMessage}
