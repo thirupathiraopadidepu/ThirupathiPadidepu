@@ -9,7 +9,7 @@ interface Props {
   isStandalone?: boolean;
 }
 
-const API_BASE = import.meta.env.VITE_API_BASE || "";
+const API_BASE = import.meta.env.VITE_API_BASE;
 
 const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
   const [messages, setMessages] = useState<
@@ -29,7 +29,7 @@ const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
     setStreamingText("TP is typing...");
 
     try {
-      const res = await fetch(`${API_BASE}/chat`, {
+      const res = await fetch(`${API_BASE}/api/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMessage }),
