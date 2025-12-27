@@ -9,7 +9,7 @@ interface Props {
   isStandalone?: boolean;
 }
 
-const API_BASE = import.meta.env.VITE_API_BASE;
+const API_BASE = import.meta.env.VITE_API_BASE || "";
 
 const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
   const [messages, setMessages] = useState<

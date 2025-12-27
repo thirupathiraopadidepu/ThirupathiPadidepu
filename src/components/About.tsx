@@ -8,6 +8,7 @@ import {
   Cloud,
   User,
   Download,
+  CheckCircle,
 } from "lucide-react";
 
 const About = () => {
@@ -16,15 +17,17 @@ const About = () => {
       id="about"
       className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden transition-colors"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent)] pointer-events-none"></div>
+      {/* Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent)] pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
+        {/* Heading */}
         <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
           About Me
         </h2>
 
         <div className="grid md:grid-cols-12 gap-8 items-center">
-          {/* Avatar Animation Section */}
+          {/* ================= AVATAR SECTION (UNCHANGED) ================= */}
           <div className="md:col-span-4 flex justify-center">
             <div className="relative">
               <div className="w-48 h-48 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center animate-float">
@@ -35,7 +38,8 @@ const About = () => {
                 (Icon, index) => (
                   <div
                     key={index}
-                    className="absolute w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center animate-orbit"
+                    className="absolute w-12 h-12 bg-gray-100 dark:bg-gray-800 
+                               rounded-full flex items-center justify-center animate-orbit"
                     style={{
                       animationDelay: `${index * 0.5}s`,
                       left: `${Math.cos(index * (Math.PI / 3)) * 100 + 92}px`,
@@ -47,83 +51,128 @@ const About = () => {
                 )
               )}
 
-              <div className="absolute inset-0 bg-blue-400 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
+              <div className="absolute inset-0 bg-blue-400 rounded-full filter blur-3xl opacity-20 animate-pulse" />
             </div>
           </div>
 
-          {/* About Content */}
+          {/* ================= CONTENT (IMPROVED) ================= */}
+          {/* ================= CONTENT ================= */}
           <div className="md:col-span-8 space-y-6 text-gray-700 dark:text-gray-300">
-            <p>
-              Hello! I’m <strong>Thirupathi Padidepu</strong> (also known as{" "}
-              <strong>Thirupathirao Padidepu</strong>), a passionate and
-              experienced <strong>Full Stack Developer</strong> specializing in{" "}
-              <strong>.NET, React, and Angular</strong> technologies. With over
-              3 years of hands-on development experience, I’ve built and
-              enhanced dynamic, user-friendly, and high-performance web
-              applications.
+            {/* Intro */}
+            <p className="text-lg">
+              I’m <strong>Thirupathi Padidepu</strong>, a Full Stack Engineer
+              helping <strong>startups and businesses</strong> build{" "}
+              <strong>
+                scalable, high-performance web & AI-driven solutions
+              </strong>
+              .
             </p>
-            {/* <p>
-              I provide <strong>freelance web development services</strong> and
-              collaborate remotely with startups, tech teams, and individual
-              clients. Whether you need a custom website, portfolio, dashboard,
-              or business application, I deliver clean code, modern UI, and
-              scalable solutions.
-            </p> */}
+
             <p>
-              <strong>Technologies I work with include:</strong>
+              With <strong>3+ years of hands-on experience</strong>, I
+              specialize in turning ideas into production-ready systems —
+              focusing on{" "}
+              <strong>
+                clean architecture, performance, and long-term scalability
+              </strong>
+              .
             </p>
-            <ul className="list-disc pl-6">
-              <li>.NET Core & ASP.NET</li>
-              <li>React.js & Next.js</li>
-              <li>Angular</li>
-              <li>JavaScript, HTML, CSS</li>
-              <li>SQL Server, MongoDB</li>
-            </ul>
-            {/* <p>
-              If you're searching for a{" "}
-              <strong>.NET Full Stack Developer</strong>,{" "}
-              <strong>React Developer</strong>, or a trusted{" "}
-              <strong>freelancer from India</strong>, let's connect!
-            </p> */}
-            <p>
+
+            {/* What I Help Build */}
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                What I Help You Build
+              </h3>
+              <ul className="grid sm:grid-cols-2 gap-2">
+                {[
+                  "Scalable SaaS platforms & dashboards",
+                  "High-conversion business websites",
+                  "AI-powered tools & automation systems",
+                  "Secure backend APIs & microservices",
+                  "Performance-optimized frontends",
+                  "Enterprise & startup-grade applications",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-blue-500 mt-0.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* How I Work */}
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                How I Work
+              </h3>
+              <ul className="list-disc pl-6 space-y-1">
+                <li>Understand business goals before writing code</li>
+                <li>Design scalable architecture from day one</li>
+                <li>Communicate clearly with regular updates</li>
+                <li>Deliver clean, maintainable, documented code</li>
+              </ul>
+            </div>
+
+            {/* Social Proof */}
+            <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 text-sm">
+              ✔ 15+ real-world projects delivered <br />
+              ✔ Experience across SaaS, healthcare & real estate <br />✔ Trusted
+              by startups & agencies
+            </div>
+
+            {/* Contact Info */}
+            <p className="text-sm">
               📧 <strong>Email:</strong> thirupathiraopadidepu@gmail.com <br />
               🔗{" "}
               <a
                 href="https://linkedin.com/in/thirupathirao-padidepu-40298b213"
-                className="text-blue-600 dark:text-blue-400 hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline"
               >
                 Connect on LinkedIn
-              </a>{" "}
-              <br />
-              💼{" "}
-              <a
-                href="https://thirupathipadidepu.in"
-                className="text-blue-600 dark:text-blue-400 hover:underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Visit My Portfolio
               </a>
             </p>
 
-            {/* Download Resume Button */}
-            <div className="mt-4">
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap gap-4 pt-4">
+              <a
+                href="#contact"
+                className="px-6 py-3 bg-blue-600 text-white rounded-lg 
+                           hover:bg-blue-700 transition shadow"
+              >
+                Let’s Work Together
+              </a>
+
+              <a
+                href="#projects"
+                className="px-6 py-3 border border-blue-500 text-blue-500 
+                           rounded-lg hover:bg-blue-500 hover:text-white transition"
+              >
+                View My Projects
+              </a>
+
               <a
                 href="/THIRUPATHI PADIDEPU - .NET.pdf"
                 download
-                className="inline-flex items-center px-5 py-2.5 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition-colors"
+                className="px-6 py-3 flex items-center gap-2 text-gray-600 
+                           dark:text-gray-300 hover:text-blue-500 transition"
               >
-                <Download className="w-5 h-5 mr-2" />
+                <Download className="w-5 h-5" />
                 Download Resume
               </a>
             </div>
+
+            {/* SEO (hidden) */}
+            <span className="sr-only">
+              Full Stack Developer in India specializing in React, ASP.NET,
+              SaaS, and AI-powered web applications.
+            </span>
           </div>
         </div>
       </div>
 
-      {/* Keyframes */}
+      {/* ================= KEYFRAMES (UNCHANGED) ================= */}
       <style>{`
         @keyframes orbit {
           from {
