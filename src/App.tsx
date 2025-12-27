@@ -10,6 +10,7 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import FloatingChatbot from "./components/chat/FloatingChatbot";
+import WhatsAppCTA from "./components/WhatsAppCTA";
 
 function App() {
   useEffect(() => {
@@ -47,6 +48,7 @@ function App() {
 
       {/* Floating Chat Widget */}
       <FloatingChatbot />
+      <WhatsAppCTA />
 
       <Footer />
     </div>
