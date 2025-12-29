@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -19,6 +19,15 @@ const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
   const [streamingText, setStreamingText] = useState("");
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
 
+  // 🔥 Auto-scroll refs
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // 🔥 Auto-scroll whenever content updates
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, streamingText]);
+
   const sendMessage = async () => {
     if (!input.trim()) return;
 
@@ -35,20 +44,11 @@ const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
         body: JSON.stringify({ message: userMessage }),
       });
 
-      // ❗ Important safety check
-      if (!res.ok) {
-        throw new Error(`Server error ${res.status}`);
-      }
+      if (!res.ok) throw new Error("Server error");
 
       const data = await res.json();
-
-      if (!data?.reply) {
-        throw new Error("Invalid response from server");
-      }
-
       const text = data.reply;
 
-      // Typing animation
       let index = 0;
       setStreamingText("");
 
@@ -63,14 +63,13 @@ const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
         }
       }, 15);
     } catch (error) {
-      console.error("Chat error:", error);
-
+      console.error(error);
       setStreamingText("");
       setMessages((prev) => [
         ...prev,
         {
           from: "bot",
-          text: "⚠️ Sorry, the assistant is temporarily unavailable. Please try again in a moment.",
+          text: "⚠️ Sorry, the assistant is temporarily unavailable. Please try again.",
         },
       ]);
     }
@@ -87,7 +86,6 @@ const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
       {/* Header */}
       <div className="flex justify-between mb-3">
         <h2 className="text-xl font-semibold text-blue-400">TP Assistant</h2>
-
         {!isStandalone && (
           <button
             onClick={onClose}
@@ -99,7 +97,10 @@ const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
       </div>
 
       {/* Messages */}
-      <div className="h-96 overflow-y-auto space-y-4 p-3 bg-gray-800 rounded-lg">
+      <div
+        ref={messagesContainerRef}
+        className="h-96 overflow-y-auto space-y-4 p-3 bg-gray-800 rounded-lg"
+      >
         {messages.map((m, i) => (
           <div
             key={i}
@@ -112,16 +113,13 @@ const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
-                code({ inline, className, children, ...props }: any) {
+                code({ inline, className, children }: any) {
                   const match = /language-(\w+)/.exec(className || "");
                   const codeText = String(children).replace(/\n$/, "");
 
                   if (inline || !match) {
                     return (
-                      <code
-                        className="bg-gray-700 px-1 py-0.5 rounded"
-                        {...props}
-                      >
+                      <code className="bg-gray-700 px-1 py-0.5 rounded">
                         {children}
                       </code>
                     );
@@ -135,8 +133,7 @@ const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
                           setCopiedCode(codeText);
                           setTimeout(() => setCopiedCode(null), 1500);
                         }}
-                        className="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition
-                                   bg-gray-700 text-gray-200 text-xs px-2 py-1 rounded"
+                        className="absolute right-2 top-2 opacity-0 group-hover:opacity-100 transition bg-gray-700 text-gray-200 text-xs px-2 py-1 rounded"
                       >
                         {copiedCode === codeText ? "✓ Copied" : "Copy"}
                       </button>
@@ -164,6 +161,9 @@ const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
             {streamingText}
           </div>
         )}
+
+        {/* 🔥 Scroll anchor */}
+        <div ref={messagesEndRef} />
       </div>
 
       {/* Input */}
@@ -172,7 +172,7 @@ const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
           className="flex-1 px-3 py-2 bg-gray-700 rounded-l-lg text-white outline-none"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Ask something..."
+          placeholder="Ask about your project, tech stack, or idea..."
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
         />
         <button
