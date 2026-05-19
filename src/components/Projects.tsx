@@ -83,7 +83,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
               onClick={() =>
                 setCurrentImage(
                   (prev) =>
-                    (prev - 1 + project.images.length) % project.images.length
+                    (prev - 1 + project.images.length) % project.images.length,
                 )
               }
               className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full"
@@ -260,7 +260,7 @@ const Projects = () => {
         "Ongoing development and maintenance of healthcare and business websites.",
       technologies: ["React", "HTML", "CSS", "SEO"],
       images: ["/vistora/aboutimg.png"],
-      status: "ongoing",
+      status: "live",
     },
   ];
 

@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import {
   Code2,
   Database,
@@ -48,127 +49,153 @@ const About = () => {
                   >
                     <Icon className="w-6 h-6 text-blue-500 dark:text-blue-400" />
                   </div>
-                )
+                ),
               )}
 
               <div className="absolute inset-0 bg-blue-400 rounded-full filter blur-3xl opacity-20 animate-pulse" />
             </div>
           </div>
-
-          {/* ================= CONTENT (IMPROVED) ================= */}
           {/* ================= CONTENT ================= */}
-          <div className="md:col-span-8 space-y-6 text-gray-700 dark:text-gray-300">
+          <motion.div
+            className="md:col-span-8 space-y-6 text-gray-700 dark:text-gray-300"
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
             {/* Intro */}
-            <p className="text-lg">
-              I’m <strong>Thirupathi Padidepu</strong>, a Full Stack Engineer
-              helping <strong>startups and businesses</strong> build{" "}
-              <strong>
-                scalable, high-performance web & AI-driven solutions
-              </strong>
-              .
+            <p className="text-lg leading-8">
+              Senior Software Engineer & AI Engineer focused on building
+              scalable web applications, AI-powered systems, and modern digital
+              products. Experienced in React, ASP.NET, cloud technologies,
+              Generative AI, and enterprise application development.
             </p>
 
-            <p>
-              With <strong>3+ years of hands-on experience</strong>, I
-              specialize in turning ideas into production-ready systems —
-              focusing on{" "}
-              <strong>
-                clean architecture, performance, and long-term scalability
-              </strong>
-              .
-            </p>
-
-            {/* What I Help Build */}
+            {/* Engineering Focus */}
             <div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                What I Help You Build
+                Engineering Focus
               </h3>
-              <ul className="grid sm:grid-cols-2 gap-2">
+
+              <ul className="grid sm:grid-cols-2 gap-3">
                 {[
-                  "Scalable SaaS platforms & dashboards",
-                  "High-conversion business websites",
-                  "AI-powered tools & automation systems",
-                  "Secure backend APIs & microservices",
-                  "Performance-optimized frontends",
-                  "Enterprise & startup-grade applications",
+                  "Scalable SaaS platforms & enterprise applications",
+                  "AI-powered systems & automation workflows",
+                  "Modern React & TypeScript frontend architectures",
+                  "ASP.NET backend APIs & microservices",
+                  "Generative AI integrations & intelligent assistants",
+                  "Cloud-ready high-performance applications",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <CheckCircle className="w-5 h-5 text-blue-500 mt-0.5" />
+                  <li
+                    key={item}
+                    className="flex items-start gap-2 bg-gray-100 dark:bg-gray-800/60 p-3 rounded-lg"
+                  >
+                    <CheckCircle className="w-5 h-5 text-violet-500 mt-0.5" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* How I Work */}
+            {/* Professional Approach */}
             <div>
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                How I Work
+                Professional Approach
               </h3>
-              <ul className="list-disc pl-6 space-y-1">
-                <li>Understand business goals before writing code</li>
-                <li>Design scalable architecture from day one</li>
-                <li>Communicate clearly with regular updates</li>
-                <li>Deliver clean, maintainable, documented code</li>
+
+              <ul className="list-disc pl-6 space-y-2">
+                <li>Build scalable and maintainable software architectures</li>
+                <li>Focus on performance, clean code, and user experience</li>
+                <li>
+                  Develop AI-enhanced workflows and modern engineering systems
+                </li>
+                <li>
+                  Collaborate effectively across product and engineering teams
+                </li>
+                <li>Continuously explore emerging AI and cloud technologies</li>
               </ul>
             </div>
 
-            {/* Social Proof */}
-            <div className="bg-gray-100 dark:bg-gray-800 rounded-lg p-4 text-sm">
-              ✔ 15+ real-world projects delivered <br />
-              ✔ Experience across SaaS, healthcare & real estate <br />✔ Trusted
-              by startups & agencies
+            {/* Experience Highlights */}
+            <div
+              className="bg-gradient-to-r from-violet-500/10 to-blue-500/10 
+                  border border-violet-500/20 rounded-xl p-5 text-sm"
+            >
+              <div className="grid sm:grid-cols-3 gap-4">
+                <div>
+                  <h4 className="text-2xl font-bold text-white">4+</h4>
+                  <p>Years Experience</p>
+                </div>
+
+                <div>
+                  <h4 className="text-2xl font-bold text-white">15+</h4>
+                  <p>Projects Built</p>
+                </div>
+
+                <div>
+                  <h4 className="text-2xl font-bold text-white">
+                    AI + Full Stack
+                  </h4>
+                  <p>Engineering Expertise</p>
+                </div>
+              </div>
             </div>
 
-            {/* Contact Info */}
-            <p className="text-sm">
-              📧 <strong>Email:</strong> thirupathiraopadidepu@gmail.com <br />
-              🔗{" "}
-              <a
-                href="https://linkedin.com/in/thirupathirao-padidepu-40298b213"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 dark:text-blue-400 hover:underline"
-              >
-                Connect on LinkedIn
-              </a>
-            </p>
+            {/* Contact */}
+            <div className="space-y-2 text-sm">
+              <p>
+                📧 <strong>Email:</strong> thirupathiraopadidepu@gmail.com
+              </p>
+
+              <p>
+                🔗{" "}
+                <a
+                  href="https://linkedin.com/in/thirupathirao-padidepu-40298b213"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-violet-500 hover:underline"
+                >
+                  Connect on LinkedIn
+                </a>
+              </p>
+            </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4 pt-4">
               <a
-                href="#contact"
-                className="px-6 py-3 bg-blue-600 text-white rounded-lg 
-                           hover:bg-blue-700 transition shadow"
+                href="#projects"
+                className="px-6 py-3 bg-gradient-to-r from-violet-600 to-blue-600 
+                 text-white rounded-lg hover:scale-105 transition-all shadow-lg"
               >
-                Let’s Work Together
+                View Projects
               </a>
 
               <a
-                href="#projects"
-                className="px-6 py-3 border border-blue-500 text-blue-500 
-                           rounded-lg hover:bg-blue-500 hover:text-white transition"
+                href="#contact"
+                className="px-6 py-3 border border-violet-500 text-violet-400
+                 rounded-lg hover:bg-violet-500 hover:text-white transition"
               >
-                View My Projects
+                Contact
               </a>
 
               <a
                 href="/THIRUPATHI PADIDEPU - .NET.pdf"
                 download
                 className="px-6 py-3 flex items-center gap-2 text-gray-600 
-                           dark:text-gray-300 hover:text-blue-500 transition"
+                 dark:text-gray-300 hover:text-violet-500 transition"
               >
                 <Download className="w-5 h-5" />
                 Download Resume
               </a>
             </div>
 
-            {/* SEO (hidden) */}
+            {/* SEO */}
             <span className="sr-only">
-              Full Stack Developer in India specializing in React, ASP.NET,
-              SaaS, and AI-powered web applications.
+              Senior Software Engineer and AI Engineer specializing in React,
+              ASP.NET, Generative AI, cloud technologies, scalable SaaS
+              applications, and enterprise software systems.
             </span>
-          </div>
+          </motion.div>{" "}
         </div>
       </div>
 
