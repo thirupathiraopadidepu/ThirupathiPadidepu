@@ -14,6 +14,60 @@ const Experience = () => {
 
         <div className="max-w-4xl mx-auto">
           <div className="relative pl-8 border-l-2 border-blue-400">
+            {/* ================= GD RESEARCH CENTER EXPERIENCE ================= */}
+            <div className="mb-12 relative">
+              <div className="absolute -left-[41px] bg-gray-800 p-2 rounded-full border-2 border-violet-400">
+                <Briefcase className="w-6 h-6 text-violet-400" />
+              </div>
+
+              <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl hover:bg-gray-900/70 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl">
+                <div className="flex flex-wrap gap-4 items-center mb-4">
+                  <h3 className="text-xl font-semibold text-white">
+                    Senior Software Engineer
+                  </h3>
+
+                  <div className="flex items-center text-gray-400 text-sm">
+                    <Calendar className="w-4 h-4 mr-1" />
+                    <span>April 2026 – Present</span>
+                  </div>
+
+                  <div className="flex items-center text-gray-400 text-sm">
+                    <MapPin className="w-4 h-4 mr-1" />
+                    <span>GD Research Center Pvt Ltd, Hyderabad</span>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  {[
+                    {
+                      title: "AI & Product Engineering",
+                      description:
+                        "Building scalable AI-powered applications and modern web platforms using React, ASP.NET, and cloud technologies.",
+                    },
+                    {
+                      title: "Full Stack Development",
+                      description:
+                        "Developing responsive frontend systems, backend APIs, and enterprise-grade application architectures for internal and client-focused products.",
+                    },
+                    {
+                      title: "Generative AI Integration",
+                      description:
+                        "Working on AI automation workflows, intelligent assistants, and Generative AI integrations to improve productivity and user experience.",
+                    },
+                  ].map((project, index) => (
+                    <div
+                      key={index}
+                      className="bg-gray-800/50 p-4 rounded-lg hover:bg-gray-800 transition-colors duration-300"
+                    >
+                      <h4 className="text-violet-400 font-medium mb-2">
+                        {project.title}
+                      </h4>
+                      <p className="text-gray-300">{project.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
             {/* ================= FREELANCE EXPERIENCE ================= */}
             <div className="mb-12 relative">
               <div className="absolute -left-[41px] bg-gray-800 p-2 rounded-full border-2 border-green-400">
@@ -28,7 +82,7 @@ const Experience = () => {
 
                   <div className="flex items-center text-gray-400 text-sm">
                     <Calendar className="w-4 h-4 mr-1" />
-                    <span>February 2025 – Present</span>
+                    <span>April 2025 – March 2026</span>
                   </div>
 
                   <div className="flex items-center text-gray-400 text-sm">
@@ -84,7 +138,7 @@ const Experience = () => {
 
                   <div className="flex items-center text-gray-400 text-sm">
                     <Calendar className="w-4 h-4 mr-1" />
-                    <span>August 2022 – January 2025</span>
+                    <span>August 2022 – February 2025</span>
                   </div>
 
                   <div className="flex items-center text-gray-400 text-sm">

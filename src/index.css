@@ -219,3 +219,58 @@ html {
 .whatsapp-pulse {
   animation: whatsapp-pulse 2s infinite;
 }
+
+/* =========================================================
+   NAV ITEM – Animated Gradient Fill Hover
+========================================================= */
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    #ff004c,
+    #ff8a00,
+    #00c6ff,
+    #7f00ff,
+    #ff004c
+  );
+  background-size: 600%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  animation: nav-gradient 6s linear infinite;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  opacity: 1;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #ffffff !important;
+}
+
+@keyframes nav-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

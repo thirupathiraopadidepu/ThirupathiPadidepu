@@ -9,15 +9,15 @@ const ServicesPage: React.FC = () => {
       {/* ================= SEO META ================= */}
       <Helmet>
         <title>
-          Web, SaaS & AI Development Services | Freelance React & .NET Developer
+          Full-Stack Web & SaaS Development Services | React, Angular, .NET
         </title>
         <meta
           name="description"
-          content="Freelance Web Developer in India offering React, ASP.NET, SaaS, AI automation, and website development services. Serving clients worldwide with scalable, SEO-friendly solutions."
+          content="Freelance Full-Stack Developer with 3+ years experience offering React, Angular, .NET, Node.js, SaaS, AI automation, cloud deployment, and website development services."
         />
         <meta
           name="keywords"
-          content="Freelance Web Developer India, React Developer, ASP.NET Developer, SaaS Developer, AI Web Development, Website Development Services, Remote Developer"
+          content="Freelance Full Stack Developer India, React Developer, Angular Developer, ASP.NET Core Developer, SaaS Developer, AI Web Development, Azure AWS Developer"
         />
         <link
           rel="canonical"
@@ -35,15 +35,19 @@ const ServicesPage: React.FC = () => {
       </div>
 
       {/* ================= HERO ================= */}
-      <h1 className="text-4xl md:text-5xl font-bold text-center mb-6 text-blue-400">
+      <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 text-blue-400">
         Web, SaaS & AI Development Services
       </h1>
 
+      <p className="text-center text-blue-300 font-medium mb-6">
+        👨‍💻 3+ Years Experience • Full-Stack Developer
+      </p>
+
       <p className="text-center text-gray-300 max-w-3xl mx-auto mb-12">
         I help startups, founders, and businesses build fast, scalable, and
-        conversion-focused websites, SaaS platforms, and AI-powered applications
-        using modern technologies like <strong>React</strong> and{" "}
-        <strong>ASP.NET</strong>.
+        secure web applications using modern technologies like{" "}
+        <strong>React</strong>, <strong>Angular</strong>, <strong>.NET</strong>,
+        and <strong>Node.js</strong>.
       </p>
 
       {/* ================= TRUST ================= */}
@@ -61,7 +65,7 @@ const ServicesPage: React.FC = () => {
             >
               {item}
             </div>
-          )
+          ),
         )}
       </div>
 
@@ -70,61 +74,61 @@ const ServicesPage: React.FC = () => {
         {[
           {
             title: "Website Development",
-            desc: "SEO-friendly, fast, and professional websites that convert visitors into customers.",
+            desc: "Professional, SEO-friendly websites built for performance and conversions.",
             items: [
               "Business & Corporate Websites",
               "Portfolio & Personal Branding",
-              "Mobile-Responsive Design",
+              "Responsive UI",
               "SEO-Optimized Structure",
             ],
           },
           {
             title: "Web Applications & SaaS",
-            desc: "Scalable web apps and SaaS platforms built for long-term growth.",
+            desc: "Scalable SaaS platforms and custom web applications.",
             items: [
-              "React & ASP.NET Applications",
+              "React / Angular Frontend",
+              ".NET / Node.js Backend",
+              "Authentication & Roles",
               "Admin Dashboards",
-              "Authentication & Role Management",
-              "Cloud-Ready Architecture",
             ],
           },
           {
-            title: "AI & Automation Solutions",
-            desc: "AI-powered tools that automate workflows and improve productivity.",
+            title: "Backend & API Development",
+            desc: "Robust, secure, and scalable backend solutions.",
+            items: [
+              "ASP.NET Core APIs",
+              "Node.js APIs",
+              "SQL Server & MongoDB",
+              "Third-Party Integrations",
+            ],
+          },
+          {
+            title: "AI & Automation",
+            desc: "AI-powered tools to automate workflows and boost productivity.",
             items: [
               "AI Chatbots",
               "Business Automation",
-              "Generative AI Integrations",
+              "Generative AI Integration",
               "Custom AI Tools",
             ],
           },
           {
             title: "UI / UX Improvements",
-            desc: "Modern, clean UI with user-focused UX for higher engagement.",
+            desc: "Modern UI with performance-focused UX improvements.",
             items: [
               "Website Redesign",
               "UX Optimization",
-              "Conversion-Focused UI",
               "Performance Improvements",
+              "Conversion-Focused UI",
             ],
           },
           {
-            title: "Branding & Graphics",
-            desc: "Strong visual identity that builds trust and recognition.",
+            title: "Cloud, Maintenance & Support",
+            desc: "Deployment, monitoring, and long-term support.",
             items: [
-              "Logo Design",
-              "Social Media Creatives",
-              "Marketing Banners",
-              "Brand Templates",
-            ],
-          },
-          {
-            title: "Maintenance & Support",
-            desc: "Reliable long-term support to keep your product secure and updated.",
-            items: [
-              "Bug Fixes",
+              "Azure & AWS Deployment",
+              "Bug Fixing",
               "Performance Optimization",
-              "Security Updates",
               "Ongoing Support",
             ],
           },
@@ -155,36 +159,97 @@ const ServicesPage: React.FC = () => {
         ))}
       </div>
 
-      {/* ================= WHY CHOOSE ================= */}
-      <div className="mt-24 py-16 px-6 bg-gradient-to-r from-blue-900/60 via-blue-800/40 to-blue-900/60 rounded-3xl border border-blue-700/40">
-        <h2 className="text-3xl font-bold text-center text-blue-300 mb-10">
-          Why Choose Me?
+      {/* ================= SERVICE PACKAGES ================= */}
+      <div className="mt-24 max-w-7xl mx-auto">
+        <h2 className="text-3xl font-bold text-center text-blue-300 mb-6">
+          Service Packages & Pricing
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {[
-            "Fast & Reliable Delivery",
-            "Modern Tech + AI Expertise",
-            "Clean & Scalable Code",
-            "Client-First Communication",
-            "Affordable Pricing",
-            "Long-Term Support",
-          ].map((text, index) => (
-            <div key={index} className="flex items-start gap-3">
-              <span className="text-blue-400 text-xl">🚀</span>
-              <p className="text-gray-300">{text}</p>
-            </div>
-          ))}
+        <p className="text-center text-gray-400 mb-14">
+          Transparent pricing with flexibility for custom requirements.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* BASIC */}
+          <div className="bg-gray-800/60 border border-gray-700 rounded-2xl p-6">
+            <h3 className="text-xl font-semibold text-blue-300 mb-2">
+              🚀 Basic Web App
+            </h3>
+            <ul className="space-y-2 text-sm text-gray-300 mb-6">
+              <li>✔ React / Angular UI</li>
+              <li>✔ Responsive Design</li>
+              <li>✔ API Integration</li>
+              <li>✔ Basic CRUD</li>
+            </ul>
+            <p className="text-lg font-semibold mb-4">₹5,000 – ₹8,000</p>
+            <Link to="/#contact" className="text-blue-400 hover:underline">
+              Enquire Now →
+            </Link>
+          </div>
+
+          {/* POPULAR */}
+          <div className="bg-blue-900/40 border-2 border-blue-400 rounded-2xl p-6 relative">
+            <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-500 px-3 py-1 text-xs rounded-full">
+              Most Popular
+            </span>
+            <h3 className="text-xl font-semibold text-blue-300 mb-2">
+              ⚡ Business / Admin Dashboard
+            </h3>
+            <ul className="space-y-2 text-sm text-gray-200 mb-6">
+              <li>✔ React / Angular</li>
+              <li>✔ .NET / Node Backend</li>
+              <li>✔ SQL / MongoDB</li>
+              <li>✔ Auth & Admin Panel</li>
+            </ul>
+            <p className="text-lg font-semibold mb-4">₹15,000 – ₹30,000</p>
+            <Link to="/#contact" className="text-blue-300 hover:underline">
+              Start Project →
+            </Link>
+          </div>
+
+          {/* BUG FIX */}
+          <div className="bg-gray-800/60 border border-gray-700 rounded-2xl p-6">
+            <h3 className="text-xl font-semibold text-blue-300 mb-2">
+              🛠 Bug Fixing
+            </h3>
+            <ul className="space-y-2 text-sm text-gray-300 mb-6">
+              <li>✔ Frontend Issues</li>
+              <li>✔ Backend/API Bugs</li>
+              <li>✔ Performance Fixes</li>
+            </ul>
+            <p className="text-lg font-semibold mb-4">₹500 – ₹2,000 / issue</p>
+            <Link to="/#contact" className="text-blue-400 hover:underline">
+              Fix My Bug →
+            </Link>
+          </div>
+
+          {/* MONTHLY */}
+          <div className="bg-gray-800/60 border border-gray-700 rounded-2xl p-6">
+            <h3 className="text-xl font-semibold text-blue-300 mb-2">
+              🔁 Monthly Support
+            </h3>
+            <ul className="space-y-2 text-sm text-gray-300 mb-6">
+              <li>✔ Bug Fixes</li>
+              <li>✔ Enhancements</li>
+              <li>✔ Priority Support</li>
+            </ul>
+            <p className="text-lg font-semibold mb-4">
+              ₹5,000 – ₹15,000 / month
+            </p>
+            <Link to="/#contact" className="text-blue-400 hover:underline">
+              Get Support →
+            </Link>
+          </div>
         </div>
       </div>
 
-      {/* ================= MAIN CTA ================= */}
+      {/* ================= CTA ================= */}
       <div className="text-center mt-20">
         <h3 className="text-2xl font-semibold mb-4">
-          Interested in a similar project?
+          Ready to start your project?
         </h3>
         <p className="text-gray-400 mb-6">
-          Let’s discuss your idea and build something impactful together.
+          Let’s discuss your idea and build something impactful.
         </p>
 
         <Link
@@ -197,6 +262,35 @@ const ServicesPage: React.FC = () => {
         >
           Start Your Project <ArrowRight className="w-5 h-5" />
         </Link>
+      </div>
+
+      {/* ================= CONTACT INFORMATION ================= */}
+      <div className="mt-20 border-b border-gray-700 pb-16">
+        <h2 className="text-2xl font-semibold mb-4">Contact Information</h2>
+        <p className="text-gray-400 mb-6">
+          Get in touch with us for any questions, project inquiries, or support
+          requests.
+        </p>
+        <ul className="space-y-2 text-sm text-gray-300">
+          <li>
+            Phone:{" "}
+            <a
+              href="tel:917036499748"
+              className="text-blue-400 hover:underline"
+            >
+              917036499748
+            </a>
+          </li>
+          <li>
+            Email:{" "}
+            <a
+              href="mailto:contact@tp.com"
+              className="text-blue-400 hover:underline"
+            >
+              thirupathiraopadidepu@gamail.com
+            </a>
+          </li>
+        </ul>
       </div>
 
       {/* ================= WHATSAPP CTA ================= */}

@@ -66,7 +66,7 @@ const Skills = () => {
       level: "Advanced",
     },
     {
-      name: "Java",
+      name: "Python",
       icon: Terminal,
       category: "Backend & APIs",
       level: "Working",
@@ -105,6 +105,12 @@ const Skills = () => {
     /* ================= AI & AUTOMATION ================= */
     {
       name: "GitHub Copilot",
+      icon: AiIcon,
+      category: "AI & Automation",
+      level: "Core",
+    },
+    {
+      name: "Claud.ai",
       icon: AiIcon,
       category: "AI & Automation",
       level: "Core",
@@ -166,9 +172,8 @@ const Skills = () => {
         </h2>
 
         <p className="text-center text-gray-400 max-w-3xl mx-auto mb-12">
-          A modern full-stack skillset focused on building scalable web
-          applications, SaaS platforms, and AI-powered solutions for real
-          business needs.
+          Focused on full stack engineering, AI-powered applications, cloud
+          technologies, and scalable software architecture.
         </p>
 
         {/* Category Filters */}
@@ -213,8 +218,8 @@ const Skills = () => {
                         skill.level === "Core"
                           ? "bg-green-500/20 text-green-400"
                           : skill.level === "Advanced"
-                          ? "bg-blue-500/20 text-blue-400"
-                          : "bg-gray-500/20 text-gray-400"
+                            ? "bg-blue-500/20 text-blue-400"
+                            : "bg-gray-500/20 text-gray-400"
                       }`}
                   >
                     {skill.level}

@@ -172,7 +172,7 @@ const ChatWindow: React.FC<Props> = ({ onClose, isStandalone = false }) => {
           className="flex-1 px-3 py-2 bg-gray-700 rounded-l-lg text-white outline-none"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Ask about your project, tech stack, or idea..."
+          placeholder="Type your message..."
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
         />
         <button

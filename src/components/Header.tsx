@@ -13,21 +13,20 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const isActiveRoute = (path?: string) => {
-    if (!path) return false;
-    return location.pathname === path;
-  };
+  const isActiveRoute = (path?: string) => path && location.pathname === path;
 
-  const navItems = [
+  type ScrollNav = { type: "scroll"; label: string; href: string };
+  type RouteNav = { type: "route"; label: string; to: string };
+  type NavItem = ScrollNav | RouteNav;
+
+  const navItems: NavItem[] = [
     { type: "scroll", label: "Home", href: "#home" },
     { type: "scroll", label: "About", href: "#about" },
     { type: "scroll", label: "Experience", href: "#experience" },
     { type: "scroll", label: "Skills", href: "#skills" },
     { type: "scroll", label: "Projects", href: "#projects" },
 
-    { type: "route", label: "Services", to: "/services" },
-    // { type: "route", label: "Blog", to: "/blog" },
-    { type: "route", label: "Chat", to: "/chat" },
+    // { type: "route", label: "Chat", to: "/chat" },
 
     { type: "scroll", label: "Contact", href: "#contact" },
   ];
@@ -51,46 +50,35 @@ const Header = () => {
           </a>
 
           {/* DESKTOP NAV */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item) =>
               item.type === "route" ? (
                 <Link
                   key={item.label}
                   to={item.to!}
-                  className={`relative group transition ${
-                    isActiveRoute(item.to)
-                      ? "text-blue-400"
-                      : "text-gray-300 hover:text-blue-400"
+                  className={`nav-link ${
+                    isActiveRoute(item.to) ? "active" : "text-gray-300"
                   }`}
                 >
                   {item.label}
-                  <span
-                    className={`absolute -bottom-1 left-0 h-0.5 bg-blue-400 transition-all duration-300 ${
-                      isActiveRoute(item.to)
-                        ? "w-full"
-                        : "w-0 group-hover:w-full"
-                    }`}
-                  />
                 </Link>
               ) : (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="text-gray-300 hover:text-blue-400 relative group transition"
+                  className="nav-link text-gray-300"
                 >
                   {item.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 transition-all duration-300 group-hover:w-full" />
                 </a>
-              )
+              ),
             )}
 
-            {/* PRIMARY CTA */}
+            {/* CTA */}
             <a
               href="/#contact"
-              className="ml-4 px-5 py-2 rounded-full bg-blue-500 text-white font-medium
-                         hover:bg-blue-600 transition shadow-md"
+              className="ml-4 px-5 py-2 rounded-full bg-blue-500 text-white font-medium hover:bg-blue-600 transition shadow-md"
             >
-              Hire Me
+              Let's Connect
             </a>
           </nav>
 
@@ -112,10 +100,8 @@ const Header = () => {
                   key={item.label}
                   to={item.to!}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`block px-4 py-2 transition ${
-                    isActiveRoute(item.to)
-                      ? "text-blue-400 bg-gray-800/50"
-                      : "text-gray-300 hover:text-blue-400 hover:bg-gray-800/50"
+                  className={`block mx-4 mb-2 nav-link ${
+                    isActiveRoute(item.to) ? "active" : "text-gray-300"
                   }`}
                 >
                   {item.label}
@@ -125,11 +111,11 @@ const Header = () => {
                   key={item.label}
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="block px-4 py-2 text-gray-300 hover:text-blue-400 hover:bg-gray-800/50 transition"
+                  className="block mx-4 mb-2 nav-link text-gray-300"
                 >
                   {item.label}
                 </a>
-              )
+              ),
             )}
 
             {/* MOBILE CTA */}
@@ -138,7 +124,7 @@ const Header = () => {
               onClick={() => setIsMenuOpen(false)}
               className="block mt-4 mx-4 text-center py-2 rounded-lg bg-blue-500 text-white font-medium"
             >
-              Hire Me
+              Contact
             </a>
           </nav>
         )}
